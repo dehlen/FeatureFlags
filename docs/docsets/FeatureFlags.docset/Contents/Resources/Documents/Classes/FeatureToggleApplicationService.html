@@ -14,7 +14,7 @@
     <a title="FeatureToggleApplicationService Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">FeatureFlags Docs</a> (20% documented)</p>
+        <p><a href="../index.html">FeatureFlags Docs</a> (96% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -89,7 +89,7 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>Concrete implementation of a feature flag provider</p>
 
           </section>
           <section class="section task-group-section">
@@ -98,9 +98,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12FeatureFlags0A24ToggleApplicationServiceC07featureC10RepositoryAA0acG0_pvp"></a>
+                    <a name="/s:12FeatureFlags0A32ToggleApplicationServiceProtocolP07featureC10RepositoryAA0acH0_pvp"></a>
                     <a name="//apple_ref/swift/Property/featureToggleRepository" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12FeatureFlags0A24ToggleApplicationServiceC07featureC10RepositoryAA0acG0_pvp">featureToggleRepository</a>
+                    <a class="token" href="#/s:12FeatureFlags0A32ToggleApplicationServiceProtocolP07featureC10RepositoryAA0acH0_pvp">featureToggleRepository</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -108,8 +108,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
-
+                        
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -162,7 +161,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Register a UIApplication with the feature flag provider. This is used to retrieve the values on app launch at to update them in real time</p>
+
+<ul>
+<li>@param application The UIApplication instance of your app
+*</li>
+</ul>
+
                       </div>
                     </section>
                   </div>
@@ -180,7 +185,9 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Register for remote notifications to update feature toggles in real time. This is needed because CloudKit will inform your app about databse changes via a silent push notification
+*</p>
+
                       </div>
                     </section>
                   </div>

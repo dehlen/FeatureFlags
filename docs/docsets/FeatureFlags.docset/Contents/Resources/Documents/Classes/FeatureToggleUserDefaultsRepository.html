@@ -14,7 +14,7 @@
     <a title="FeatureToggleUserDefaultsRepository Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">FeatureFlags Docs</a> (20% documented)</p>
+        <p><a href="../index.html">FeatureFlags Docs</a> (96% documented)</p>
       </div>
     </header>
     <div class="content-wrapper">
@@ -90,7 +90,7 @@
 
                 </div>
               </div>
-            <p>Undocumented</p>
+            <p>Concrete implementation of a FeatureFlagRepository. Stores the feature flags in the UserDefaults.</p>
 
           </section>
           <section class="section task-group-section">
@@ -109,7 +109,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Initialize the repository with some given UserDefaults. If nil a UserDefaults suite is created for you. If creation of the suite fails fallsback to <code>UserDefaults.standard</code></p>
 
                       </div>
                       <div class="declaration">
@@ -126,9 +126,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12FeatureFlags0A16ToggleRepositoryP8retrieve12identifiableAA0aC13Representable_pAA0aC12Identifiable_p_tF"></a>
+                    <a name="/s:12FeatureFlags0A28ToggleUserDefaultsRepositoryC8retrieve12identifiableAA0aC13Representable_pAA0aC12Identifiable_p_tF"></a>
                     <a name="//apple_ref/swift/Method/retrieve(identifiable:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12FeatureFlags0A16ToggleRepositoryP8retrieve12identifiableAA0aC13Representable_pAA0aC12Identifiable_p_tF">retrieve(identifiable:)</a>
+                    <a class="token" href="#/s:12FeatureFlags0A28ToggleUserDefaultsRepositoryC8retrieve12identifiableAA0aC13Representable_pAA0aC12Identifiable_p_tF">retrieve(identifiable:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -136,7 +136,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Retrieve a feature flag from the repository</p>
+
+<ul>
+<li>@param identifiable The identifier of the feature flag
+*</li>
+</ul>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
@@ -152,9 +158,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12FeatureFlags0A16ToggleRepositoryP4save07featureC0yAA0aC13Representable_p_tF"></a>
+                    <a name="/s:12FeatureFlags0A28ToggleUserDefaultsRepositoryC4save07featureC0yAA0aC13Representable_p_tF"></a>
                     <a name="//apple_ref/swift/Method/save(featureToggle:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12FeatureFlags0A16ToggleRepositoryP4save07featureC0yAA0aC13Representable_p_tF">save(featureToggle:)</a>
+                    <a class="token" href="#/s:12FeatureFlags0A28ToggleUserDefaultsRepositoryC4save07featureC0yAA0aC13Representable_p_tF">save(featureToggle:)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -162,7 +168,13 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        
+                        <p>Save a feature flag to the repository</p>
+
+<ul>
+<li>@param featureToggle The feature flag to save
+*</li>
+</ul>
+
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>

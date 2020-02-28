@@ -4,17 +4,24 @@ import CloudKit
 import UIKit
 #endif
 
+/// Protocol for your feature flag provider
 public protocol FeatureToggleApplicationServiceProtocol {
+    /// The repository to store the feature flags in
     var featureToggleRepository: FeatureToggleRepository { get }
 
     #if canImport(UIKit)
+    /** Register a UIApplication with the feature flag provider. This is used to retrieve the values on app launch at to update them in real time
+    *  @param application The UIApplication instance of your app
+    **/
     func register(application: UIApplication)
+    /** Register for remote notifications to update feature toggles in real time. This is needed because CloudKit will inform your app about databse changes via a silent push notification
+    **/
     func handleRemoteNotification(subscriptionID: String?, completionHandler: @escaping (UIBackgroundFetchResult) -> Void)
     #endif
 }
 
+/// Concrete implementation of a feature flag provider
 public class FeatureToggleApplicationService: NSObject, FeatureToggleApplicationServiceProtocol {
-    
     private var featureToggleSubscriptor: CloudKitSubscriptionProtocol
     private (set) public var featureToggleRepository: FeatureToggleRepository
     
@@ -28,12 +35,17 @@ public class FeatureToggleApplicationService: NSObject, FeatureToggleApplication
     }
     
     #if canImport(UIKit)
+    /** Register a UIApplication with the feature flag provider. This is used to retrieve the values on app launch at to update them in real time
+    *  @param application The UIApplication instance of your app
+    **/
     public func register(application: UIApplication) {
         application.registerForRemoteNotifications()
         featureToggleSubscriptor.saveSubscription()
         featureToggleSubscriptor.fetchAll()
     }
     
+    /** Register for remote notifications to update feature toggles in real time. This is needed because CloudKit will inform your app about databse changes via a silent push notification
+    **/
     public func handleRemoteNotification(subscriptionID: String?, completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         if let subscriptionID = subscriptionID, featureToggleSubscriptor.subscriptionID == subscriptionID {
             featureToggleSubscriptor.handleNotification()

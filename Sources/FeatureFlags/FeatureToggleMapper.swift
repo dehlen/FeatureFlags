@@ -1,18 +1,27 @@
 import Foundation
 import CloudKit
 
+/// Protocol representing a feature flag
 public protocol FeatureToggleRepresentable {
+    /// The identifier of the feature flag. Should be unique
     var identifier: String { get }
+    /// Whether the feature flag is active or not.
     var isActive: Bool { get }
 }
 
+/// Protocol identifieing a feature flag
 public protocol FeatureToggleIdentifiable {
+    /// The identifier of the feature flag. Should be unique
     var identifier: String { get }
+    /// The fallback value. Will be used if no information is given about whether the feature flag is active or not. This can happen for example if the CloudKit sync failed.
     var fallbackValue: Bool { get }
 }
 
+/// Concrete implementation of a feature flag
 public struct FeatureToggle: FeatureToggleRepresentable, Equatable {
+    /// The identifier of the feature flag. Should be unique
     public let identifier: String
+    /// Whether the feature flag is active or not.
     public let isActive: Bool
 }
 
