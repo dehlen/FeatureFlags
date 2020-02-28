@@ -48,29 +48,29 @@ func application(_ application: UIApplication, didReceiveRemoteNotification user
 
 ```swift
 enum FeatureToggle: String, FeatureToggleIdentifiable {
-        case feature1
-        case feature2
-        
-        var identifier: String {
-            return self.rawValue
-        }
-        
-        var fallbackValue: Bool {
-            switch self {
-            case .feature1:
-                return false
-            case .feature2:
-                return true
-            }
+    case feature1
+    case feature2
+    
+    var identifier: String {
+        return self.rawValue
+    }
+    
+    var fallbackValue: Bool {
+        switch self {
+        case .feature1:
+            return false
+        case .feature2:
+            return true
         }
     }
+}
 ``` 
 
 ### Notifications
 
 You can subscribe to updates from your feature toggles in CloudKit by subscribing to the `onRecordsUpdated` Notification like so:
 
-```
+```swift
 NotificationCenter.default.addObserver(self, selector: #selector(updateToggleStatusFromNotification), name: NSNotification.Name.onRecordsUpdated, object: nil)
 ```
 
