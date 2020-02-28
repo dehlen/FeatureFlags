@@ -1,6 +1,8 @@
 # Feature Flags
 <img src="https://img.shields.io/badge/supports-Swift%20Package%20Manager-green.svg">
 <img src="./docs/badge.svg">
+<img src="https://img.shields.io/badge/Swift-5-orange">
+<img src="https://img.shields.io/badge/Platforms-iOS | macOS-lightgrey">
 
 Feature Toggles offer a way to enable or disable certain features that are present in your codebase, switch environments or configurations or toggle between multiple implementations of a protocol - even in your live system at runtime. *Feature Flags* are implemented using `CloudKit` and are therefor associated with no run costs for the developer. Existing Feature Toggles can be changed in the [CloudKit Dashboard](https://icloud.developer.apple.com/dashboard/) and are delivered immediately via silent push notifications to your users.
 
