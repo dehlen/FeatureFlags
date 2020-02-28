@@ -1,0 +1,145 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/FeatureFlags/Sources/FeatureFlags/FeatureToggleApplicationService.swift",
+      "line": 7,
+      "symbol": "FeatureToggleApplicationServiceProtocol",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/FeatureFlags/Sources/FeatureFlags/FeatureToggleApplicationService.swift",
+      "line": 8,
+      "symbol": "FeatureToggleApplicationServiceProtocol.featureToggleRepository",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/FeatureFlags/Sources/FeatureFlags/FeatureToggleApplicationService.swift",
+      "line": 16,
+      "symbol": "FeatureToggleApplicationService",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/FeatureFlags/Sources/FeatureFlags/FeatureToggleApplicationService.swift",
+      "line": 19,
+      "symbol": "FeatureToggleApplicationService.featureToggleRepository",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/FeatureFlags/Sources/FeatureFlags/FeatureToggleApplicationService.swift",
+      "line": 21,
+      "symbol": "FeatureToggleApplicationService.init(featureToggleRepository:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/FeatureFlags/Sources/FeatureFlags/FeatureToggleMapper.swift",
+      "line": 4,
+      "symbol": "FeatureToggleRepresentable",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/FeatureFlags/Sources/FeatureFlags/FeatureToggleMapper.swift",
+      "line": 5,
+      "symbol": "FeatureToggleRepresentable.identifier",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/FeatureFlags/Sources/FeatureFlags/FeatureToggleMapper.swift",
+      "line": 6,
+      "symbol": "FeatureToggleRepresentable.isActive",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/FeatureFlags/Sources/FeatureFlags/FeatureToggleMapper.swift",
+      "line": 9,
+      "symbol": "FeatureToggleIdentifiable",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/FeatureFlags/Sources/FeatureFlags/FeatureToggleMapper.swift",
+      "line": 10,
+      "symbol": "FeatureToggleIdentifiable.identifier",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/FeatureFlags/Sources/FeatureFlags/FeatureToggleMapper.swift",
+      "line": 11,
+      "symbol": "FeatureToggleIdentifiable.fallbackValue",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/FeatureFlags/Sources/FeatureFlags/FeatureToggleMapper.swift",
+      "line": 14,
+      "symbol": "FeatureToggle",
+      "symbol_kind": "source.lang.swift.decl.struct",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/FeatureFlags/Sources/FeatureFlags/FeatureToggleMapper.swift",
+      "line": 15,
+      "symbol": "FeatureToggle.identifier",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/FeatureFlags/Sources/FeatureFlags/FeatureToggleMapper.swift",
+      "line": 16,
+      "symbol": "FeatureToggle.isActive",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/FeatureFlags/Sources/FeatureFlags/FeatureToggleRepository.swift",
+      "line": 3,
+      "symbol": "FeatureToggleRepository",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/FeatureFlags/Sources/FeatureFlags/FeatureToggleRepository.swift",
+      "line": 10,
+      "symbol": "FeatureToggleUserDefaultsRepository",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/FeatureFlags/Sources/FeatureFlags/FeatureToggleRepository.swift",
+      "line": 15,
+      "symbol": "FeatureToggleUserDefaultsRepository.init(defaults:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/FeatureFlags/Sources/FeatureFlags/FeatureToggleRepository.swift",
+      "line": 20,
+      "symbol": "FeatureToggleUserDefaultsRepository",
+      "symbol_kind": "source.lang.swift.decl.extension",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/FeatureFlags/Sources/FeatureFlags/Notification+Extensions.swift",
+      "line": 4,
+      "symbol": "Notification.Name.onRecordsUpdated",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/d0283356/Downloads/Libraries/FeatureFlags/Sources/FeatureFlags/Notification+Extensions.swift",
+      "line": 8,
+      "symbol": "Notification.featureTogglesUserInfoKey",
+      "symbol_kind": "source.lang.swift.decl.var.static",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/d0283356/Downloads/Libraries/FeatureFlags"
+}

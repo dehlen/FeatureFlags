@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>FeatureFlags  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="FeatureFlags  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">FeatureFlags Docs</a> (20% documented)</p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">FeatureFlags Reference</a>
+        <img id="carat" src="img/carat.png" />
+        FeatureFlags  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/FeatureToggleApplicationService.html">FeatureToggleApplicationService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/FeatureToggleUserDefaultsRepository.html">FeatureToggleUserDefaultsRepository</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Extensions/FeatureToggleApplicationService.html">FeatureToggleApplicationService</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Notification.html">Notification</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Extensions/Notification/Name.html">– Name</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/FeatureToggleApplicationServiceProtocol.html">FeatureToggleApplicationServiceProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/FeatureToggleIdentifiable.html">FeatureToggleIdentifiable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/FeatureToggleRepository.html">FeatureToggleRepository</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/FeatureToggleRepresentable.html">FeatureToggleRepresentable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/FeatureToggle.html">FeatureToggle</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='feature-flags' class='heading'>Feature Flags</h1>
+
+<p><img src="https://img.shields.io/badge/supports-Swift%20Package%20Manager-green.svg">
+<img src="./docs/badge.svg"></p>
+
+<p>Feature Toggles offer a way to enable or disable certain features that are present in your codebase, switch environments or configurations or toggle between multiple implementations of a protocol - even in your live system at runtime. <em>Feature Flags</em> are implemented using <code>CloudKit</code> and are therefor associated with no run costs for the developer. Existing Feature Toggles can be changed in the <a href="https://icloud.developer.apple.com/dashboard/">CloudKit Dashboard</a> and are delivered immediately via silent push notifications to your users.</p>
+<h2 id='installation' class='heading'>Installation</h2>
+
+<p>Currently only Swift Package Manager is supported. 
+Swift Package Manager is a dependency manager built into Xcode.</p>
+
+<p>If you are using Xcode 11 or higher, go to File / Swift Packages / Add Package Dependency&hellip; and enter package repository URL <a href="https://github.com/dehlen/FeatureFlags.git">https://github.com/dehlen/FeatureFlags.git</a>, then follow the instructions.</p>
+
+<p>To remove the dependency, select the project and open Swift Packages (which is next to Build Settings). You can add and remove packages from this tab.</p>
+<h2 id='usage' class='heading'>Usage</h2>
+<h3 id='cloudkit-preparations' class='heading'>CloudKit Preparations</h3>
+
+<ol>
+<li>If your application does not support CloudKit yet start with adding the <code>CloudKit</code> and <code>remote background notification</code> entitlements to your application</li>
+<li>Add a new custom record type &lsquo;FeatureStatus&rsquo; with two fields:</li>
+</ol>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>featureName</code></td>
+<td><code>String</code></td>
+</tr>
+<tr>
+<td><code>isActive</code></td>
+<td><code>Int64</code></td>
+</tr>
+</tbody></table>
+
+<p>For each feature toggle you want to support in your application later add a new record in your CloudKit <em>public database</em>. </p>
+<h3 id='in-your-project' class='heading'>In your project</h3>
+
+<ol>
+<li>In your AppDelegate, initialize a <code><a href="Classes/FeatureToggleApplicationService.html">FeatureToggleApplicationService</a></code> and hook its two <code>UIApplicationDelegate</code> methods into the AppDelegate lifecycle like so:</li>
+</ol>
+<pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplication</span><span class="o">.</span><span class="kt">LaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="c1">// Override point for customization after application launch.</span>
+        <span class="k">return</span> <span class="n">featureToggleApplicationService</span><span class="o">.</span><span class="nf">application</span><span class="p">(</span><span class="n">application</span><span class="p">,</span> <span class="nv">didFinishLaunchingWithOptions</span><span class="p">:</span> <span class="n">launchOptions</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didReceiveRemoteNotification</span> <span class="nv">userInfo</span><span class="p">:</span> <span class="p">[</span><span class="kt">AnyHashable</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">],</span> <span class="n">fetchCompletionHandler</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">UIBackgroundFetchResult</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">featureToggleApplicationService</span><span class="o">.</span><span class="nf">application</span><span class="p">(</span><span class="n">application</span><span class="p">,</span> <span class="nv">didReceiveRemoteNotification</span><span class="p">:</span> <span class="n">userInfo</span><span class="p">,</span> <span class="nv">fetchCompletionHandler</span><span class="p">:</span> <span class="n">completionHandler</span><span class="p">)</span>
+<span class="p">}</span>
+
+</code></pre>
+
+<ol>
+<li>Anywhere in your code you can create an instance of <code><a href="Classes/FeatureToggleUserDefaultsRepository.html">FeatureToggleUserDefaultsRepository</a></code> and call <code>retrieve</code> to fetch the current status of a feature toggle.</li>
+</ol>
+
+<blockquote>
+<p>:warning: Note that <code>retrieve</code> returns the locally saved status of your toggle, this command does not trigger a fetch from CloudKit. Feature Toggles are fetched from CloudKit once at app start from within the <code><a href="Classes/FeatureToggleApplicationService.html">FeatureToggleApplicationService</a></code> <code>UIApplicationDelegate</code> hook. Additionally you can subscribe to updates whenever there was a change to the feature toggles in CloudKit as shown in the next section. </p>
+</blockquote>
+
+<ol>
+<li>You have to call <code>retrieve</code> with your implementation of a <code><a href="Protocols/FeatureToggleIdentifiable.html">FeatureToggleIdentifiable</a></code>. What I think works well is creating an enum which implements <code><a href="Protocols/FeatureToggleIdentifiable.html">FeatureToggleIdentifiable</a></code>:</li>
+</ol>
+<pre class="highlight swift"><code><span class="kd">enum</span> <span class="kt">FeatureToggle</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="kt">FeatureToggleIdentifiable</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="n">feature1</span>
+        <span class="k">case</span> <span class="n">feature2</span>
+
+        <span class="k">var</span> <span class="nv">identifier</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">self</span><span class="o">.</span><span class="n">rawValue</span>
+        <span class="p">}</span>
+
+        <span class="k">var</span> <span class="nv">fallbackValue</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span>
+            <span class="k">switch</span> <span class="k">self</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="o">.</span><span class="nv">feature1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">false</span>
+            <span class="k">case</span> <span class="o">.</span><span class="nv">feature2</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">true</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</code></pre>
+<h3 id='notifications' class='heading'>Notifications</h3>
+
+<p>You can subscribe to updates from your feature toggles in CloudKit by subscribing to the <code>onRecordsUpdated</code> Notification like so:</p>
+<pre class="highlight plaintext"><code>NotificationCenter.default.addObserver(self, selector: #selector(updateToggleStatusFromNotification), name: NSNotification.Name.onRecordsUpdated, object: nil)
+</code></pre>
+<pre class="highlight plaintext"><code>@objc
+private func updateToggleStatusFromNotification(notification NSNotification) {
+    guard let updatedToggles = notification.userInfo[Notification.featureToggleUserInfoKey] as? [FeatureToggle] else {
+        return
+    }
+
+    // do something with the updated toggle like e.g. disabling UI elements 
+}
+</code></pre>
+
+<p>Note that the updated Feature Toggles are attached to the notifications userInfo dictionary. When this notification has been sent the updated values are also already stored in the repository.   </p>
+<h2 id='documentation' class='heading'>Documentation</h2>
+
+<p>The documentation is generated thanks to <a href="https://github.com/realm/jazzy">jazzy</a>.</p>
+
+<p>You can find the latest version here: <a href="./docs">Documentation</a>.</p>
+<h2 id='license' class='heading'>License</h2>
+
+<p>The MIT License</p>
+
+<p>Copyright &copy; 2020 David Ehlen</p>
+
+<p>See LICENSE file</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-02-28)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
