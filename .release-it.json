@@ -1,0 +1,29 @@
+{
+  "hooks": {
+  	"before:init": "jazzy --module FeatureFlags --swift-build-tool spm --build-tool-arguments -Xswiftc,-swift-version,-Xswiftc,5"
+  },
+  "git": {
+    "requireCleanWorkingDir": false,
+    "requireBranch": "master",
+    "requireUpstream": true,
+    "requireCommits": false,
+    "addUntrackedFiles": false,
+    "commit": true,
+    "commitMessage": "Release ${version}",
+    "commitArgs": "",
+    "tag": true,
+    "tagName": "${version}",
+    "tagAnnotation": "Release ${version}",
+    "tagArgs": "",
+    "push": true,
+    "pushArgs": "--follow-tags",
+    "pushRepo": "origin"
+  },
+  "github": {
+    "release": true,
+    "releaseName": "Release ${version}",
+    "preRelease": false,
+    "draft": false,
+    "tokenRef": "GITHUB_TOKEN"
+  }
+}
