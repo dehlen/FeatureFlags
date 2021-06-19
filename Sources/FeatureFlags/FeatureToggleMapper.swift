@@ -39,10 +39,10 @@ class FeatureToggleMapper: FeatureToggleMappable {
     }
     
     func map(record: CKRecord) -> FeatureToggle? {
-        guard let isActive = record[featureToggleIsActiveFieldID] as? Int64, let featureName = record[featureToggleNameFieldID] as? String else {
+        guard let featureName = record[featureToggleNameFieldID] as? String else {
             return nil
         }
-        
+        let isActive = record[featureToggleIsActiveFieldID] as? Int64 ?? 0
         return FeatureToggle(identifier: featureName, isActive: NSNumber(value: isActive).boolValue)
     }
 }
